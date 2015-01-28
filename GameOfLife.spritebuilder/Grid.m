@@ -150,18 +150,28 @@ static const int GRID_COLUMNS = 10;
         for (int j = 0; j < [_gridArray[i] count]; j++)
         {
             Creature *currentCreature = _gridArray[i][j];
+            currentCreature.livingNeighbors = 0;
             
             // remember that every creature has a 'livingNeighbors' property that we created earlier
             //currentCreature.livingNeighbors = 0;
-            
-            if(currentCreature.livingNeighbors == 3)
+            for (int x = (i-1); x <= (i+1); x++)
             {
-                currentCreature.isAlive = TRUE;
-                numAlive = numAlive +1;
-            }
-            if(currentCreature.livingNeighbors <= 1 || currentCreature.livingNeighbors >= 4)
-            {
-                currentCreature.isAlive = FALSE;
+                // go through the column to the left of the current cell, the column the cell is in, and the column to the right of the current cell
+                for (int y = (j-1); y <= (j+1); y++)
+                {
+                    BOOL isIndexValid;
+                    isIndexValid = [self isIndexValidForX:x andY:y];
+
+                    if(currentCreature.livingNeighbors == 3)
+                    {
+                        currentCreature.isAlive = TRUE;
+                        numAlive = numAlive +1;
+                    }
+                    if(currentCreature.livingNeighbors <= 1 || currentCreature.livingNeighbors >= 4)
+                    {
+                        currentCreature.isAlive = FALSE;
+                    }
+                }
             }
         }
     }
