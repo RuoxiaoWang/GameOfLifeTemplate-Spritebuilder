@@ -7,8 +7,6 @@
 //
 
 
-// hello hello hello im linzhiyu
-
 
 #import "MainScene.h"
 #import "Grid.h"
