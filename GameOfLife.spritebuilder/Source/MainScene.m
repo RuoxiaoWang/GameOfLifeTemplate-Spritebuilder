@@ -6,6 +6,10 @@
 //  Copyright (c) 2013 Apportable. All rights reserved.
 //
 
+
+// hello hello hello im linzhiyu
+
+
 #import "MainScene.h"
 #import "Grid.h"
 
